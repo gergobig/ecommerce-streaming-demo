@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.8
+    restart: always
+    environment:
+      POSTGRES_USER: gbig
+      POSTGRES_PASSWORD: gbig
+      POSTGRES_DB: postgres
+    volumes:
+      - ./postgres/tables/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    ports:
+      - 5432:5432
