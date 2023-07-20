@@ -13,7 +13,7 @@ It also includes a Kafka UI to monitor Kafka messages.
 - run `make start`
 - (optional) open `localhost:8080` to monitor kafka.
 ## Architecture
-```plantuml
+```
 @startuml
 actor "User" as user
 component "Fake Data Generator" AS datagen <<python>>
