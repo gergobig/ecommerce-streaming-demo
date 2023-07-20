@@ -3,6 +3,8 @@ version: '3'
 services:
   db:
     image: postgres:14.8
+    hostname: db
+    container_name: db
     restart: always
     environment:
       POSTGRES_USER: gbig
@@ -10,6 +12,43 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - ./postgres/tables/init.sql:/docker-entrypoint-initdb.d/init.sql
-
     ports:
       - 5432:5432
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    container_name: zookeper
+    ports:
+      - 2181:2181
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: docker.io/bitnami/kafka:3.4
+    container_name: kafka
+    ports:
+      - 9093:9093
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui
+    depends_on:
+      - kafka
+    ports:
+      - 8080:8080
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+  generator:
+    build:
+        context: ./container/fake_data_generator/
+    command: python /srv/fake_data_generator/generate.py
+    volumes:
+        - ./fake_data_generator:/srv/fake_data_generator
+    container_name: generator
+    restart: on-failure
+    depends_on:
+        - db
+        - kafka

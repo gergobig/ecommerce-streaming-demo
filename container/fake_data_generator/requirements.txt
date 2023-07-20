@@ -1,0 +1,6 @@
+faker
+bcrypt
+pandas
+faker-commerce
+psycopg2-binary
+confluent-kafka

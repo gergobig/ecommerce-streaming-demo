@@ -7,7 +7,7 @@ from psycopg2.extras import execute_batch
 
 
 class PostgresConnector:
-    def __init__(self, host='localhost', database='postgres', user='gbig', password='gbig'):
+    def __init__(self, host='db', database='postgres', user='gbig', password='gbig'):
         self.host = host
         self.database = database
         self.user = user
@@ -41,7 +41,7 @@ class PostgresConnector:
             execute_batch(cur, query, values)
         logging.info(f'Data has been loaded to {table} table with psycopg2.')
 
-    def execute_command_from_file(self, file_path: str) -> int:
+    def execute_command_from_file(self, file_path: str):
         query = self.__read_query_from_file(file_path)
         with self.conn.cursor() as cur:
             cur.execute(query)

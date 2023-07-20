@@ -46,7 +46,7 @@ def generate_click_event(user: dict, product: dict):
         'url': fake.uri(),
         'ip_address': fake.ipv4(),
         'address': fake.address(),
-        'event_timestamp': datetime.datetime.now(),
+        'event_timestamp': datetime.datetime.now().isoformat(),
         'user_agent': fake.user_agent(),
     }
 
@@ -67,7 +67,7 @@ def generate_checkout_event(user: dict, product: dict):
         'billing_address': fake.address() if random.random() < 0.8 else address,
         'user_agent': fake.user_agent(),
         'ip_address': fake.ipv4(),
-        'event_timestamp': datetime.datetime.now(),
+        'event_timestamp': datetime.datetime.now().isoformat(),
     }
 
     return checkout_event
