@@ -7,17 +7,19 @@ venv:
 
 build:
 	python -m pip install --upgrade pip
-	python -m pip install -e '.[generator]'
+	python -m pip install -r container/fake_data_generator/requirements.txt
 
 
 build-test:
 	python -m pip install --upgrade pip
-	python -m pip install -e '.[test]'
+	python -m pip install -r requirements.txt
 
 build-all: build build-test
 
-init-infra:
+infra-up:
 	docker-compose up -d
 
-shutdown:
+infra-down:
 	docker compose down
+
+start: infra-down infra-up
