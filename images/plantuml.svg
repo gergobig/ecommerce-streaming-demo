@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="350px" preserveAspectRatio="none" style="width:540px;height:350px;background:#FFFFFF;" version="1.1" viewBox="0 0 540 350" width="540px" zoomAndPan="magnify"><defs/><g><!--MD5=[8fc3522a43f8c7199df5e09e5bb0188e]
+entity user--><g id="elem_user"><ellipse cx="98.5" cy="14" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M98.5,22 L98.5,49 M85.5,30 L111.5,30 M98.5,49 L85.5,64 M98.5,49 L111.5,64 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="82.5" y="78.4951">User</text></g><!--MD5=[27c43deb04516661622ec53754f37fde]
+entity datagen--><g id="elem_datagen"><rect fill="#F1F1F1" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="7" y="158.5"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="170" y="163.5"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="168" y="165.5"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="168" y="169.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="66" x="60.5" y="191.4951">«python»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="22" y="207.792">Fake Data Generator</text></g><!--MD5=[7468467f3b6b392f1d176d828c753b77]
+entity db--><g id="elem_db"><path d="M395.5,169 C395.5,159 459.5,159 459.5,159 C459.5,159 523.5,159 523.5,169 L523.5,210.5938 C523.5,220.5938 459.5,220.5938 459.5,220.5938 C459.5,220.5938 395.5,220.5938 395.5,210.5938 L395.5,169 " fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M395.5,169 C395.5,179 459.5,179 459.5,179 C459.5,179 523.5,179 523.5,169 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="80" x="419.5" y="195.9951">«postgres»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="405.5" y="212.292">ecommerce DB</text></g><!--MD5=[e29745d789d1cd237fb5892a53e7b9d1]
+entity kafka--><g id="elem_kafka"><path d="M44.5,300 L152.5,300 C157.5,300 157.5,321.2969 157.5,321.2969 C157.5,321.2969 157.5,342.5938 152.5,342.5938 L44.5,342.5938 C39.5,342.5938 39.5,321.2969 39.5,321.2969 C39.5,321.2969 39.5,300 44.5,300 " fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M152.5,300 C147.5,300 147.5,321.2969 147.5,321.2969 C147.5,342.5938 152.5,342.5938 152.5,342.5938 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="54" x="66.5" y="317.9951">«kafka»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="44.5" y="334.292">Event receiver</text></g><!--MD5=[73a06388a3d0bcfd7e7ad679a483c079]
+entity kafka_ui--><g id="elem_kafka_ui"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="94" x="302.5" y="298.5"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="376.5" y="303.5"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="374.5" y="305.5"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="374.5" y="309.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="317.5" y="331.4951">Kafka UI</text></g><!--MD5=[ebf734068562da922a6e4a4bbb1a99c3]
+link user to datagen--><g id="link_user_datagen"><path d="M98.5,81.71 C98.5,105.46 98.5,135.87 98.5,158.25 " fill="none" id="user-datagen" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="109" x="99.5" y="124.5669">Starts simulation</text></g><!--MD5=[a0e8fa1c826afa9934eb8a76ae9c1c16]
+link datagen to db--><g id="link_datagen_db"><path d="M190.06,190 C254.19,190 338.29,190 395.35,190 " fill="none" id="datagen-db" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="208.25" y="183.0669">Stores users and products</text></g><!--MD5=[374cbb6ff8f03508af4f392a85749577]
+link datagen to kafka--><g id="link_datagen_kafka"><path d="M98.5,221.69 C98.5,245.77 98.5,278.65 98.5,299.73 " fill="none" id="datagen-kafka" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142" x="99.5" y="264.5669">Sends events to kafka</text></g><!--MD5=[64cb229ad34c6fd9608a5d22b15b65c1]
+link kafka to kafka_ui--><g id="link_kafka_kafka_ui"><path d="M167.75,321.5 C206.93,321.5 255.34,321.5 292.34,321.5 " fill="none" id="kafka-kafka_ui" style="stroke:#181818;stroke-width:1.0;"/><path d="M299.3818,313.0428 A9,9 0 0 0 299.3818 329.9572" fill="none" style="stroke:#181818;stroke-width:1.5;"/><path d="M160.7482,329.9572 A9,9 0 0 0 160.7482 313.0428" fill="none" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="108" x="176" y="314.5669">frontend of kafka</text></g><!--MD5=[ee3832839caa14539f6ec81ee3c3e84c]
+@startuml
+actor "User" as user
+component "Fake Data Generator" AS datagen <<python>>
+database "ecommerce DB" AS db <<postgres>>
+queue "Event receiver" AS kafka <<kafka>>
+component "Kafka UI" AS kafka_ui
+
+user - - datagen: Starts simulation
+datagen - db : Stores users and products
+datagen - - kafka : Sends events to kafka
+kafka )-( kafka_ui : frontend of kafka
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
