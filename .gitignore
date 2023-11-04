@@ -161,3 +161,5 @@ cython_debug/
 
 llintpy.yml
 data
+package-lock.json
+package.json

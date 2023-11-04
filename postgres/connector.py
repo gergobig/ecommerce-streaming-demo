@@ -31,6 +31,7 @@ class PostgresConnector:
         with open(file_path, 'r', encoding='utf8') as f:
             return ' '.join(f.readlines()).replace('\n', '')
 
+
     def insert_batch_data(self, data: List[Dict[str, Any]], table: str, schema: str = 'ecommerce'):
         columns = data[0].keys()
         values = [tuple(d.values()) for d in data]
@@ -40,6 +41,17 @@ class PostgresConnector:
         with self.conn.cursor() as cur:
             execute_batch(cur, query, values)
         logging.info(f'Data has been loaded to {table} table with psycopg2.')
+
+    def insert(self, data: Dict[str, Any], table: str, schema: str = 'ecommerce'):
+        columns = data.keys()
+        values = tuple(data.values())
+
+        placeholders = ', '.join(['%s'] * len(columns))
+        query = f"INSERT INTO {schema}.{table} ({', '.join(columns)}) VALUES ({placeholders})"
+        with self.conn.cursor() as cur:
+            cur.execute(query, values)
+        self.conn.commit()
+        logging.info(f'A row has been loaded to {table} table with psycopg2.')
 
     def execute_command_from_file(self, file_path: str):
         query = self.__read_query_from_file(file_path)
