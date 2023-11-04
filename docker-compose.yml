@@ -57,8 +57,21 @@ services:
     command: python /srv/fake_data_generator/generate.py
     volumes:
         - ./fake_data_generator:/srv/fake_data_generator
+        - ./postgres:/srv/postgres
     container_name: generator
     restart: on-failure
     depends_on:
         - db
         - kafka
+  click-consumer:
+      build:
+          context: ./container/consumers/
+      command: python /srv/consumers/handler.py
+      volumes:
+          - ./consumers:/srv/consumers
+          - ./postgres:/srv/postgres
+      container_name: click-consumer
+      restart: on-failure
+      depends_on:
+          - kafka
+          - generator

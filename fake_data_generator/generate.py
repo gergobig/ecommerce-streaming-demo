@@ -5,7 +5,7 @@ import logging
 
 from confluent_kafka import Producer
 
-from fake_data_generator.utils.connector import PostgresConnector
+from postgres.connector import PostgresConnector
 from fake_data_generator.utils.args import get_args
 from fake_data_generator.utils.generators import (
     generate_checkout_event,
