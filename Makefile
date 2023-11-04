@@ -8,6 +8,7 @@ venv:
 build:
 	python -m pip install --upgrade pip
 	python -m pip install -r container/fake_data_generator/requirements.txt
+	python -m pip install -r container/consumers/requirements.txt
 
 build-test:
 	python -m pip install --upgrade pip
