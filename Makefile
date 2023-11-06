@@ -26,4 +26,4 @@ start: infra-down infra-up kafka-ui
 
 kafka-ui:
 	sleep 30
-	open http://localhost:8080/
+	open http://localhost:8181/
