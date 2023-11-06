@@ -14,14 +14,14 @@ def get_args():
         '--no_products',
         '--np',
         type=int,
-        default=1000,
+        default=1_000,
         help='Number of products to generate.',
     )
     parser.add_argument(
         '--no_events',
         '--ne',
         type=int,
-        default=1_000_000,
+        default=10_000,
         help='Maximum number of events to generate.',
     )
     return parser.parse_args()

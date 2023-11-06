@@ -32,7 +32,7 @@ class PostgresConnector:
             return ' '.join(f.readlines()).replace('\n', '')
 
 
-    def insert_batch_data(self, data: List[Dict[str, Any]], table: str, schema: str = 'ecommerce'):
+    def insert_batch(self, data: List[Dict[str, Any]], table: str, schema: str = 'ecommerce'):
         columns = data[0].keys()
         values = [tuple(d.values()) for d in data]
 

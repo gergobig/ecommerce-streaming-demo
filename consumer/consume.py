@@ -19,7 +19,7 @@ CONF = {
 def main():
     # wait for cluster and producer to start
     time.sleep(60)
-    consume_topic('click', process_events)
+    consume_topic(['click','checkout'], process_events)
 
 
 def process_events(message):
@@ -32,10 +32,10 @@ def process_events(message):
         conn.insert(row, table=row['event_type'])
 
 
-def consume_topic(topic, process_message_func):
+def consume_topic(topics: list, process_message_func):
     try:
         consumer = Consumer(CONF)
-        consumer.subscribe([topic])
+        consumer.subscribe(topics)
 
         message_count = 0
         while True:
