@@ -63,14 +63,14 @@ services:
     depends_on:
         - db
         - kafka
-  click-consumer:
+  kafka-consumer:
       build:
-          context: ./container/consumers/
-      command: python /srv/consumers/handler.py
+          context: ./container/consumer/
+      command: python /srv/consumer/consume.py
       volumes:
-          - ./consumers:/srv/consumers
+          - ./consumer:/srv/consumer
           - ./postgres:/srv/postgres
-      container_name: click-consumer
+      container_name: kafka-consumer
       restart: on-failure
       depends_on:
           - kafka

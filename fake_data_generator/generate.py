@@ -22,8 +22,8 @@ def main(no_users: int, no_products: int, no_events: int):
     products = generate_products(no_products)
 
     with PostgresConnector() as conn:
-        conn.insert_batch_data(users, 'users')
-        conn.insert_batch_data(products, 'products')
+        conn.insert_batch(users, 'users')
+        conn.insert_batch(products, 'products')
 
     time.sleep(15)
     for _ in range(no_events):
