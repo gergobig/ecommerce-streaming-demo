@@ -163,3 +163,4 @@ llintpy.yml
 data
 package-lock.json
 package.json
+.DS_Store
