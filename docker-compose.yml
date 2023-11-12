@@ -28,11 +28,10 @@ services:
       - 9093:9093
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
-      # KRaft settings
+
       - KAFKA_CFG_NODE_ID=0
       - KAFKA_CFG_PROCESS_ROLES=controller,broker
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
-      # Listeners
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
@@ -53,7 +52,7 @@ services:
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
   generator:
     build:
-        context: ./container/fake_data_generator/
+        context: ./containers/fake_data_generator/
     command: python /srv/fake_data_generator/generate.py
     volumes:
         - ./fake_data_generator:/srv/fake_data_generator
@@ -65,7 +64,7 @@ services:
         - kafka
   kafka-consumer:
       build:
-          context: ./container/consumer/
+          context: ./containers/consumer/
       command: python /srv/consumer/consume.py
       volumes:
           - ./consumer:/srv/consumer
@@ -75,21 +74,40 @@ services:
       depends_on:
           - kafka
           - generator
-  spark:
+  spark-master:
+    container_name: spark-master
     build:
-      context: ./container/stream_processing
-    container_name: spark
-    user: root
-    ports:
-      - 8080:8080
-      - 7077:7077
-    environment:
-      - SPARK_MASTER_HOST=spark-master
-      - SPARK_MASTER_PORT=7077
-      - SPARK_MASTER_WEBUI_PORT=8080
-      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      context: ./containers/spark/
+    image: spark-image
+    entrypoint: ["./entrypoint.sh", "master"]
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
     volumes:
-          - ./stream_processing:/stream_processing
+      - ./stream_processing:/opt/spark/stream_processing
+    env_file:
+      - ./containers/spark/.env.spark
+    ports:
+      - 9090:8080
+      - 7077:7077
+  spark-history-server:
+    container_name: spark-history
+    image: spark-image
+    entrypoint: ['./entrypoint.sh', 'history']
     depends_on:
-      - kafka
-      - generator
+      - spark-master
+    env_file:
+      - ./containers/spark/.env.spark
+    ports:
+      - 18080:18080
+  spark-worker:
+    image: spark-image
+    entrypoint: ['./entrypoint.sh', 'worker']
+    depends_on:
+      - spark-master
+    env_file:
+      - ./containers/spark/.env.spark
+    volumes:
+      - ./stream_processing:/opt/spark/stream_processing
